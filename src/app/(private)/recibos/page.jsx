@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import PrivateHeader from "@/components/PrivateHeader";
+import PrivateHeader from '../../../components/PrivateHeader';
+
 import RecibosClient from "./RecibosClient";
 import { getSupabaseServerReadonly } from "@/lib/supabaseServerReadonly";
 

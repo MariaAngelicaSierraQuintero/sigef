@@ -1,6 +1,7 @@
 // src/app/(private)/layout.jsx
 import { redirect } from "next/navigation";
-import PrivateHeader from "@/components/PrivateHeader";
+import PrivateHeader from '../../components/PrivateHeader';
+
 import { getUserWithRole } from "@/lib/getUserWithRole";
 
 export default async function PrivateLayout({ children }) {
