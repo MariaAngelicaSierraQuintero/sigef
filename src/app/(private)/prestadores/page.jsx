@@ -232,7 +232,7 @@ export default function PrestadoresPage() {
   return (
     <div className="bg-white min-h-screen">
       <main className="max-w-5xl mx-auto p-6">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-4">Prestadores</h1>
+        <h1 className="text-2xl font-semibold text-gray-800 mb-4">Proveedores</h1>
 
         {/* Formulario */}
         <form
