@@ -164,14 +164,14 @@ const fecha = egreso.fecha
   const tablaContable = [
     [
       "28150510",
-      `VALORES RECIBIDOS PARA TERCEROS ${convenioTxt},
+      `VALORES RECIBIDOS PARA TERCEROS ${convenioTxt}`,
       "",
       fmtMoney(valorBruto),
       "",
     ],
     [
       egreso.cod_retencion || "",
-      `RETENCIÓN ${retPct}%`,
+    "RETENCIÓN " + retPct + "%",
       fmtMoney(valorRetencion),
       "",
       fmtMoney(valorRetencion),
