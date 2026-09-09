@@ -16,6 +16,7 @@ export default function ConveniosPage() {
   const [q, setQ] = useState("");
 
   const [form, setForm] = useState({
+      tipo: "Convenio",
     codigo: "",
     nombre: "",
     descripcion: "",
@@ -24,6 +25,7 @@ export default function ConveniosPage() {
 
   const resetForm = () => {
     setForm({
+        tipo: "Convenio",
       codigo: "",
       nombre: "",
       descripcion: "",
@@ -84,15 +86,16 @@ export default function ConveniosPage() {
         }
 
         const { data, error } = await supabase
-          .from("convenios")
-          .insert([
-            {
-              codigo: form.codigo,
-              nombre: form.nombre,
-              descripcion: form.descripcion || null,
-              anio: form.anio ? Number(form.anio) : null,
-            },
-          ])
+  .from("convenios")
+  .insert([
+    {
+      tipo: form.tipo,
+      codigo: form.codigo,
+      nombre: form.nombre,
+      descripcion: form.descripcion || null,
+      anio: form.anio ? Number(form.anio) : null,
+    },
+  ])
           .select();
 
         if (error) throw error;
@@ -104,6 +107,7 @@ export default function ConveniosPage() {
         const { data, error } = await supabase
           .from("convenios")
           .update({
+            tipo: form.tipo,
             codigo: form.codigo,
             nombre: form.nombre,
             descripcion: form.descripcion || null,
@@ -131,6 +135,7 @@ export default function ConveniosPage() {
 
   const onEdit = (c) => {
     setForm({
+      tipo: c.tipo || "Convenio",
       codigo: c.codigo || "",
       nombre: c.nombre || "",
       descripcion: c.descripcion || "",
@@ -206,6 +211,16 @@ export default function ConveniosPage() {
           onSubmit={onSubmit}
           className="grid md:grid-cols-4 gap-3 mb-6 border border-gray-200 rounded-2xl p-4"
         >
+           <select
+    name="tipo"
+    value={form.tipo}
+    onChange={onChange}
+    className="border border-gray-300 p-2 rounded w-full"
+  >
+    <option value="Convenio">Convenio</option>
+    <option value="Proyecto">Proyecto</option>
+    <option value="Contrato">Contrato</option>
+  </select>
           <input
             name="codigo"
             value={form.codigo}
