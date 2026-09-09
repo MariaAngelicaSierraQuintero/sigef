@@ -26,6 +26,7 @@ const supabase = createBrowserClient(
     retencion_pct: 0,
     medio_pago: "Efectivo",
     cod_retencion: "",
+    fecha: new Date().toISOString().split("T")[0],
   });
 
   // UI / feedback
@@ -220,6 +221,7 @@ const supabase = createBrowserClient(
         convenio: convenioCodigo,
         prestador_id: proveedor.id,
         prestador_cedula: proveedor.cedula,
+        fecha: form.fecha,
         concepto: form.concepto,
         descripcion: form.descripcion || null,
         cantidad: Number(form.cantidad || 0),
@@ -409,7 +411,19 @@ const supabase = createBrowserClient(
             ))
           )}
         </select>
-
+{/* FECHA DEL EGRESO */}
+<div className="mb-3">
+  <label className="block text-sm text-gray-700 mb-1">
+    Fecha del egreso
+  </label>
+  <input
+    type="date"
+    className="border border-gray-300 p-2 rounded w-full"
+    value={form.fecha}
+    name="fecha"
+    onChange={onChange}
+  />
+</div>
         {/* CONCEPTO + DESCRIPCIÓN */}
         <div className="grid md:grid-cols-2 gap-3">
           <div>
