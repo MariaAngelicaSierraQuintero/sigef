@@ -294,6 +294,7 @@ export default function ConveniosPage() {
           <div className="rounded-2xl border border-gray-200 overflow-hidden">
             {/* Header desktop */}
             <div className="hidden md:grid grid-cols-12 bg-gray-50 text-xs font-semibold text-gray-600 px-4 py-2 border-b border-gray-200">
+               <div className="col-span-2">Tipo</div>
               <div className="col-span-3">Código</div>
               <div className="col-span-4">Nombre</div>
               <div className="col-span-3">Año</div>
@@ -304,6 +305,13 @@ export default function ConveniosPage() {
               {filtered.map((c) => (
                 <li key={c.id} className="px-4 py-3">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
+                   {/* Tipo */}
+<div className="md:col-span-2 text-sm text-gray-700">
+  <span className="font-semibold">
+    {c.tipo || "Convenio"}
+  </span>
+</div>
+
                     {/* Código */}
                     <div className="md:col-span-3">
                       <div className="font-medium text-gray-800">
