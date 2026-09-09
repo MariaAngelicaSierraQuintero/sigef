@@ -115,7 +115,7 @@ const fecha = egreso.fecha
       ["Proveedor", nombrePrestador],
       ["Cédula", prestador?.cedula || "-"],
       ["Teléfono", prestador?.telefono || "No registrado"],
-      ["Convenio", convenioTxt],
+    [egreso.tipo_documento || "Convenio", convenioTxt],
     ],
     theme: "grid",
     styles: {
@@ -164,7 +164,7 @@ const fecha = egreso.fecha
   const tablaContable = [
     [
       "28150510",
-      `VALORES RECIBIDOS PARA TERCEROS ${convenioTxt} diseño y manejo de redes sociales`,
+      `VALORES RECIBIDOS PARA TERCEROS ${convenioTxt},
       "",
       fmtMoney(valorBruto),
       "",

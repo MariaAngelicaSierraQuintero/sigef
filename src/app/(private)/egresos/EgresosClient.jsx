@@ -75,7 +75,7 @@ const supabase = createBrowserClient(
     const fetchConvenios = async () => {
       const { data, error } = await supabase
         .from("convenios")
-        .select("id, codigo, nombre")
+.select("id, codigo, nombre, tipo")
         .order("codigo", { ascending: true });
 
       if (error) {
@@ -214,11 +214,16 @@ const supabase = createBrowserClient(
         // fallback si queda tipo "3065-2025 — ministerio cultura"
         convenioCodigo = convenioCodigo.split("-")[0].trim();
       }
+const convenioSeleccionado = convenios.find(
+  (c) => `${c.codigo} — ${c.nombre}` === form.convenio
+);
 
+const tipoDocumento = convenioSeleccionado?.tipo || "Convenio";
       // Preparamos payload para insertar.
       // OJO: NO mandamos "consecutivo": Postgres lo pone solo
       const payload = {
         convenio: convenioCodigo,
+        tipo_documento: tipoDocumento,
         prestador_id: proveedor.id,
         prestador_cedula: proveedor.cedula,
         fecha: form.fecha,
@@ -407,13 +412,13 @@ const supabase = createBrowserClient(
                 key={c.id}
                 value={`${c.codigo} — ${c.nombre}`}
               >
-                {c.codigo} — {c.nombre}
+                {c.tipo || "Convenio"} — {c.codigo} — {c.nombre}
               </option>
             ))
           )}
         </select>
-{/* FECHA DEL EGRESO */}
-<div className="mb-3">
+        {/* FECHA DEL EGRESO */}
+        <div className="mb-3">
   <label className="block text-sm text-gray-700 mb-1">
     Fecha del egreso
   </label>

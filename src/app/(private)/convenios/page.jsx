@@ -16,7 +16,7 @@ export default function ConveniosPage() {
   const [q, setQ] = useState("");
 
   const [form, setForm] = useState({
-      tipo: "Convenio",
+    tipo: "Convenio",
     codigo: "",
     nombre: "",
     descripcion: "",
@@ -25,7 +25,7 @@ export default function ConveniosPage() {
 
   const resetForm = () => {
     setForm({
-        tipo: "Convenio",
+      tipo: "Convenio",
       codigo: "",
       nombre: "",
       descripcion: "",
@@ -86,16 +86,16 @@ export default function ConveniosPage() {
         }
 
         const { data, error } = await supabase
-  .from("convenios")
-  .insert([
-    {
-      tipo: form.tipo,
-      codigo: form.codigo,
-      nombre: form.nombre,
-      descripcion: form.descripcion || null,
-      anio: form.anio ? Number(form.anio) : null,
-    },
-  ])
+          .from("convenios")
+          .insert([
+            {
+              tipo: form.tipo,
+              codigo: form.codigo,
+              nombre: form.nombre,
+              descripcion: form.descripcion || null,
+              anio: form.anio ? Number(form.anio) : null,
+            },
+          ])
           .select();
 
         if (error) throw error;
@@ -211,16 +211,16 @@ export default function ConveniosPage() {
           onSubmit={onSubmit}
           className="grid md:grid-cols-4 gap-3 mb-6 border border-gray-200 rounded-2xl p-4"
         >
-           <select
-    name="tipo"
-    value={form.tipo}
-    onChange={onChange}
-    className="border border-gray-300 p-2 rounded w-full"
-  >
-    <option value="Convenio">Convenio</option>
-    <option value="Proyecto">Proyecto</option>
-    <option value="Contrato">Contrato</option>
-  </select>
+          <select
+            name="tipo"
+            value={form.tipo}
+            onChange={onChange}
+            className="border border-gray-300 p-2 rounded w-full"
+          >
+            <option value="Convenio">Convenio</option>
+            <option value="Proyecto">Proyecto</option>
+            <option value="Contrato">Contrato</option>
+          </select>
           <input
             name="codigo"
             value={form.codigo}
@@ -294,7 +294,7 @@ export default function ConveniosPage() {
           <div className="rounded-2xl border border-gray-200 overflow-hidden">
             {/* Header desktop */}
             <div className="hidden md:grid grid-cols-12 bg-gray-50 text-xs font-semibold text-gray-600 px-4 py-2 border-b border-gray-200">
-               <div className="col-span-2">Tipo</div>
+              <div className="col-span-2">Tipo</div>
               <div className="col-span-3">Código</div>
               <div className="col-span-4">Nombre</div>
               <div className="col-span-3">Año</div>
@@ -305,12 +305,13 @@ export default function ConveniosPage() {
               {filtered.map((c) => (
                 <li key={c.id} className="px-4 py-3">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4">
-                   {/* Tipo */}
-<div className="md:col-span-2 text-sm text-gray-700">
-  <span className="font-semibold">
-    {c.tipo || "Convenio"}
-  </span>
-</div>
+                   
+                    {/* Tipo */}
+                    <div className="md:col-span-2 text-sm text-gray-700">
+                      <span className="font-semibold">
+                        {c.tipo || "Convenio"}
+                      </span>
+                    </div>
 
                     {/* Código */}
                     <div className="md:col-span-3">
