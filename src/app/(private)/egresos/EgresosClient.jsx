@@ -282,6 +282,7 @@ const supabase = createBrowserClient(
       // limpiar formulario
       setForm((f) => ({
         ...f,
+        fecha: new Date().toISOString().split("T")[0],
         concepto: "",
         descripcion: "",
         cantidad: 1,

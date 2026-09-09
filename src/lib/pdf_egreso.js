@@ -24,11 +24,9 @@ export async function generarYSubirPDFEgreso(egreso, prestador) {
   // ===============================
   // 1) Preparar datos
   // ===============================
-  const fecha = format(
-    new Date(egreso.fecha || Date.now()),
-    "PPP",
-    { locale: es }
-  );
+const fecha = egreso.fecha
+  ? format(new Date(`${egreso.fecha}T12:00:00`), "PPP", { locale: es })
+  : format(new Date(), "PPP", { locale: es });
 
   const cantidad = Number(egreso.cantidad || 0);
   const vlrUnit = Number(egreso.valor_unitario || 0);
